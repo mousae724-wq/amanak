@@ -5,7 +5,7 @@ class ScanResult(models.Model):
 
     class Status(models.TextChoices):
         SAFE = 'safe', 'Safe'
-         = 'suspicious', 'Suspicious'
+        SUSPICIOUS = 'suspicious', 'Suspicious'
         DANGEROUS = 'dangerous', 'Dangerous'
 
     url = models.URLField(max_length=2048)
