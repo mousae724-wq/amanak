@@ -1,13 +1,17 @@
 from django.contrib import admin
-from .models import Service, Booking
+from .models import ScanResult, Report, Feedback
 
-@admin.register(Service)
-class ServiceAdmin(admin.ModelAdmin):
-    list_display = ['name', 'price', 'is_active']
-    list_filter = ['is_active']
+@admin.register(ScanResult)
+class ScanResultAdmin(admin.ModelAdmin):
+    list_display = ('url', 'status', 'created_at')
+    list_filter = ('status',)
+    search_fields = ('url',)
 
-@admin.register(Booking)
-class BookingAdmin(admin.ModelAdmin):
-    list_display = ['full_name', 'phone', 'service', 'status', 'created_at']
-    list_filter = ['status', 'service']
-    search_fields = ['full_name', 'phone']
+@admin.register(Report)
+class ReportAdmin(admin.ModelAdmin):
+    list_display = ('title', 'total_scans', 'safe_count', 'suspicious_count', 'dangerous_count', 'created_at')
+
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ('name', 'rating', 'created_at')
+    list_filter = ('rating',)
