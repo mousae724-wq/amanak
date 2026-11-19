@@ -1,8 +1,14 @@
 from django.urls import path
-from . import views
+from .views import (
+    DashboardStatsView,
+    ScanListCreateView,
+    ReportListCreateView,
+    FeedbackListCreateView,
+)
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('api/services/', views.services_list, name='services'),
-    path('api/bookings/', views.bookings_list, name='bookings'),
+    path('api/dashboard/stats/', DashboardStatsView.as_view(), name='dashboard-stats'),
+    path('api/dashboard/scans/', ScanListCreateView.as_view(), name='scan-list'),
+    path('api/reports/', ReportListCreateView.as_view(), name='report-list'),
+    path('api/feedback/', FeedbackListCreateView.as_view(), name='feedback-list'),
 ]
